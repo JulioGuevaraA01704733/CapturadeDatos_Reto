@@ -1,0 +1,83 @@
+import customtkinter as ctk
+
+# Función para guardar las respuestas ingresadas
+def guardar_respuestas(event=None):
+    fecha = entrada_fecha.get()
+    opcion_seleccionada = opcion.get()
+    nombre = entrada_nombre.get()
+    telefono = entrada_telefono.get()
+
+    if fecha and opcion_seleccionada and nombre and telefono:
+        with open("respuestas.txt", "a") as file:
+            file.write(f"{fecha}, {opcion_seleccionada}, {nombre}\n")
+        etiqueta_resultado.configure(text="Respuestas guardadas exitosamente", text_color="green")
+    else:
+        etiqueta_resultado.configure(text="Por favor complete todas las respuestas", text_color="red")
+
+# Inicializar la aplicación
+app = ctk.CTk()
+
+# Configurar la ventana principal
+app.geometry("640x600")
+app.title("Entrevista de ingreso al albergue Casa Monarca, Ayuda Humanitaria al Migrante, A.B.P.")
+
+#Fuente negrita
+fuente_negrita = ctk.CTkFont(family="Helvetica", size=14, weight="bold")
+
+# Etiqueta para el campo de entrada de la fecha
+etiqueta_fecha = ctk.CTkLabel(app, text="Fecha de atención (DD/MM/AAAA):", font = fuente_negrita)
+etiqueta_fecha.pack(pady=10)
+
+# Campo de entrada para la fecha
+entrada_fecha = ctk.CTkEntry(app, width=200)
+entrada_fecha.pack(pady=10)
+
+# Pregunta de opción múltiple
+etiqueta_pregunta = ctk.CTkLabel(app, text="Adulto, NNA, NNAnA", font = fuente_negrita)
+etiqueta_pregunta.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion = ctk.StringVar(value="")
+
+# Opciones de la pregunta
+opcion1 = ctk.CTkRadioButton(app, text="Adulto.", variable=opcion, value="Adulto")
+opcion1.pack(pady=5)
+opcion2 = ctk.CTkRadioButton(app, text="Niña acompañada.", variable=opcion, value="Niña acompañada")
+opcion2.pack(pady=5)
+opcion3 = ctk.CTkRadioButton(app, text="Niño acompañado.", variable=opcion, value="Niño acompañado")
+opcion3.pack(pady=5)
+opcion4 = ctk.CTkRadioButton(app, text="Adolescente acompañado.", variable=opcion, value="Adolescente acompañado")
+opcion4.pack(pady=5)
+opcion5 = ctk.CTkRadioButton(app, text="Niña no acompañada.", variable=opcion, value="Niña no acompañada")
+opcion5.pack(pady=5)
+opcion6 = ctk.CTkRadioButton(app, text="Niño no acompañado.", variable=opcion, value="Niño no acompañado")
+opcion6.pack(pady=5)
+opcion7 = ctk.CTkRadioButton(app, text="Adolescente no acompañado.", variable=opcion, value="Adolescente no acompañado")
+opcion7.pack(pady=5)
+
+# Etiqueta para el campo de nombre
+etiqueta_nombre = ctk.CTkLabel(app, text="Nombre completo.", font = fuente_negrita)
+etiqueta_nombre.pack(pady=10)
+
+# Campo de entrada para el nombre
+entrada_nombre = ctk.CTkEntry(app, width=200)
+entrada_nombre.pack(pady=10)
+
+# Etiqueta para el campo de teléfono
+etiqueta_telefono = ctk.CTkLabel(app, text="Número telefónico de contacto.", font = fuente_negrita)
+etiqueta_telefono.pack(pady=10)
+
+# Campo de entrada para el teléfono
+entrada_telefono = ctk.CTkEntry(app, width=200)
+entrada_telefono.pack(pady=10)
+
+# Botón para guardar las respuestas
+boton_guardar = ctk.CTkButton(app, text="Guardar Respuestas", command=guardar_respuestas)
+boton_guardar.pack(pady=20)
+
+# Etiqueta para mostrar el resultado
+etiqueta_resultado = ctk.CTkLabel(app, text="")
+etiqueta_resultado.pack(pady=10)
+
+# Ejecutar el bucle principal de la aplicación
+app.mainloop()
