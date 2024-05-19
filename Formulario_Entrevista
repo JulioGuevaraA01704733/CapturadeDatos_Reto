@@ -1,15 +1,17 @@
 import customtkinter as ctk
+import tkinter as tk
 
 # Función para guardar las respuestas ingresadas
 def guardar_respuestas(event=None):
     fecha = entrada_fecha.get()
-    opcion_seleccionada = opcion.get()
+    opcion_ANA_seleccionada = opcion_ANA.get()
     nombre = entrada_nombre.get()
     telefono = entrada_telefono.get()
+    opcion_sexo_seleccionada = opcion_sexo.get()
 
-    if fecha and opcion_seleccionada and nombre and telefono:
+    if fecha and opcion_ANA_seleccionada and nombre and telefono and opcion_sexo_seleccionada:
         with open("respuestas.txt", "a") as file:
-            file.write(f"{fecha}, {opcion_seleccionada}, {nombre}\n")
+            file.write(f"{fecha}, {opcion_ANA_seleccionada}, {nombre}, {opcion_sexo_seleccionada}\n")
         etiqueta_resultado.configure(text="Respuestas guardadas exitosamente", text_color="green")
     else:
         etiqueta_resultado.configure(text="Por favor complete todas las respuestas", text_color="red")
@@ -18,65 +20,125 @@ def guardar_respuestas(event=None):
 app = ctk.CTk()
 
 # Configurar la ventana principal
-app.geometry("640x600")
+app.geometry("640x800")
 app.title("Entrevista de ingreso al albergue Casa Monarca, Ayuda Humanitaria al Migrante, A.B.P.")
+
+
+
+# Crear un contenedor para el canvas y la scrollbar
+frame_contenedor = ctk.CTkFrame(app)
+frame_contenedor.pack(fill="both", expand=True)
+
+# Crear un canvas y añadirlo al contenedor
+canvas = tk.Canvas(frame_contenedor)
+canvas.pack(side="left", fill="both", expand=True)
+
+# Añadir una scrollbar vertical al contenedor
+scrollbar = ctk.CTkScrollbar(frame_contenedor, orientation="vertical", command=canvas.yview)
+scrollbar.pack(side="right", fill="y")
+
+# Configurar el canvas para usar la scrollbar
+canvas.configure(yscrollcommand=scrollbar.set)
+
+# Crear un frame dentro del canvas que contendrá todos los widgets
+frame_contenido = ctk.CTkFrame(canvas)
+canvas.create_window((0, 0), window=frame_contenido, anchor="nw")
+
+# Función para actualizar el tamaño del canvas cuando se añaden nuevos widgets
+def actualizar_scrollregion(event):
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+# Vincular la función de actualización al evento de cambio de tamaño del frame contenido
+frame_contenido.bind("<Configure>", actualizar_scrollregion)
+
+
 
 #Fuente negrita
 fuente_negrita = ctk.CTkFont(family="Helvetica", size=14, weight="bold")
 
 # Etiqueta para el campo de entrada de la fecha
-etiqueta_fecha = ctk.CTkLabel(app, text="Fecha de atención (DD/MM/AAAA):", font = fuente_negrita)
+etiqueta_fecha = ctk.CTkLabel(frame_contenido, text="Fecha de atención (DD/MM/AAAA):", font = fuente_negrita)
 etiqueta_fecha.pack(pady=10)
 
 # Campo de entrada para la fecha
-entrada_fecha = ctk.CTkEntry(app, width=200)
+entrada_fecha = ctk.CTkEntry(frame_contenido, width=200)
 entrada_fecha.pack(pady=10)
 
-# Pregunta de opción múltiple
-etiqueta_pregunta = ctk.CTkLabel(app, text="Adulto, NNA, NNAnA", font = fuente_negrita)
-etiqueta_pregunta.pack(pady=10)
+# Pregunta de opción múltiple 
+etiqueta_ANA = ctk.CTkLabel(frame_contenido, text="Adulto, NNA, NNAnA", font = fuente_negrita)
+etiqueta_ANA.pack(pady=10)
 
 # Variable para almacenar la opción seleccionada
-opcion = ctk.StringVar(value="")
+opcion_ANA = ctk.StringVar(value="")
+
+
+
+frame_opciones1 = ctk.CTkFrame(frame_contenido)
+frame_opciones1.pack(pady=10, padx=10, anchor="w")
+
+
 
 # Opciones de la pregunta
-opcion1 = ctk.CTkRadioButton(app, text="Adulto.", variable=opcion, value="Adulto")
-opcion1.pack(pady=5)
-opcion2 = ctk.CTkRadioButton(app, text="Niña acompañada.", variable=opcion, value="Niña acompañada")
-opcion2.pack(pady=5)
-opcion3 = ctk.CTkRadioButton(app, text="Niño acompañado.", variable=opcion, value="Niño acompañado")
-opcion3.pack(pady=5)
-opcion4 = ctk.CTkRadioButton(app, text="Adolescente acompañado.", variable=opcion, value="Adolescente acompañado")
-opcion4.pack(pady=5)
-opcion5 = ctk.CTkRadioButton(app, text="Niña no acompañada.", variable=opcion, value="Niña no acompañada")
-opcion5.pack(pady=5)
-opcion6 = ctk.CTkRadioButton(app, text="Niño no acompañado.", variable=opcion, value="Niño no acompañado")
-opcion6.pack(pady=5)
-opcion7 = ctk.CTkRadioButton(app, text="Adolescente no acompañado.", variable=opcion, value="Adolescente no acompañado")
-opcion7.pack(pady=5)
+opcion_ANA1 = ctk.CTkRadioButton(frame_opciones1, text="Adulto.", variable=opcion_ANA, value="Adulto")
+opcion_ANA1.pack(pady=5)
+opcion_ANA2 = ctk.CTkRadioButton(frame_opciones1, text="Niña acompañada.", variable=opcion_ANA, value="Niña acompañada")
+opcion_ANA2.pack(pady=5)
+opcion_ANA3 = ctk.CTkRadioButton(frame_opciones1, text="Niño acompañado.", variable=opcion_ANA, value="Niño acompañado")
+opcion_ANA3.pack(pady=5)
+opcion_ANA4 = ctk.CTkRadioButton(frame_opciones1, text="Adolescente acompañado.", variable=opcion_ANA, value="Adolescente acompañado")
+opcion_ANA4.pack(pady=5)
+opcion_ANA5 = ctk.CTkRadioButton(frame_opciones1, text="Niña no acompañada.", variable=opcion_ANA, value="Niña no acompañada")
+opcion_ANA5.pack(pady=5)
+opcion_ANA6 = ctk.CTkRadioButton(frame_opciones1, text="Niño no acompañado.", variable=opcion_ANA, value="Niño no acompañado")
+opcion_ANA6.pack(pady=5)
+opcion_ANA7 = ctk.CTkRadioButton(frame_opciones1, text="Adolescente no acompañado.", variable=opcion_ANA, value="Adolescente no acompañado")
+opcion_ANA7.pack(pady=5)
 
 # Etiqueta para el campo de nombre
-etiqueta_nombre = ctk.CTkLabel(app, text="Nombre completo.", font = fuente_negrita)
+etiqueta_nombre = ctk.CTkLabel(frame_contenido, text="Nombre completo.", font = fuente_negrita)
 etiqueta_nombre.pack(pady=10)
 
 # Campo de entrada para el nombre
-entrada_nombre = ctk.CTkEntry(app, width=200)
+entrada_nombre = ctk.CTkEntry(frame_contenido, width=200)
 entrada_nombre.pack(pady=10)
 
 # Etiqueta para el campo de teléfono
-etiqueta_telefono = ctk.CTkLabel(app, text="Número telefónico de contacto.", font = fuente_negrita)
+etiqueta_telefono = ctk.CTkLabel(frame_contenido, text="Número telefónico de contacto.", font = fuente_negrita)
 etiqueta_telefono.pack(pady=10)
 
 # Campo de entrada para el teléfono
-entrada_telefono = ctk.CTkEntry(app, width=200)
+entrada_telefono = ctk.CTkEntry(frame_contenido, width=200)
 entrada_telefono.pack(pady=10)
 
+# Pregunta de opción múltiple
+etiqueta_sexo = ctk.CTkLabel(frame_contenido, text="Sexo.", font = fuente_negrita)
+etiqueta_sexo.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_sexo = ctk.StringVar(value="")
+
+
+frame_opciones2 = ctk.CTkFrame(frame_contenido)
+frame_opciones2.pack(pady=10, padx=10, anchor="w")
+
+
+
+# Opciones de la pregunta
+opcion_sexo1 = ctk.CTkRadioButton(frame_opciones2, text="Mujer LGBTTTIQ+.", variable=opcion_sexo, value="Mujer LGBTTTIQ+")
+opcion_sexo1.pack(pady=5)
+opcion_sexo2 = ctk.CTkRadioButton(frame_opciones2, text="Mujer.", variable=opcion_sexo, value="Mujer LGBTTTIQ+")
+opcion_sexo2.pack(pady=5)
+opcion_sexo3 = ctk.CTkRadioButton(frame_opciones2, text="Hombre LGBTTTIQ+.", variable=opcion_sexo, value="Hombre LGBTTTIQ+")
+opcion_sexo3.pack(pady=5)
+opcion_sexo4 = ctk.CTkRadioButton(frame_opciones2, text="Hombre.", variable=opcion_sexo, value="Hombre.")
+opcion_sexo4.pack(pady=5)
+
 # Botón para guardar las respuestas
-boton_guardar = ctk.CTkButton(app, text="Guardar Respuestas", command=guardar_respuestas)
+boton_guardar = ctk.CTkButton(frame_contenido, text="Guardar Respuestas", command=guardar_respuestas)
 boton_guardar.pack(pady=20)
 
 # Etiqueta para mostrar el resultado
-etiqueta_resultado = ctk.CTkLabel(app, text="")
+etiqueta_resultado = ctk.CTkLabel(frame_contenido, text="")
 etiqueta_resultado.pack(pady=10)
 
 # Ejecutar el bucle principal de la aplicación
