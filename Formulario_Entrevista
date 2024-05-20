@@ -5,13 +5,12 @@ import tkinter as tk
 def guardar_respuestas(event=None):
     fecha = entrada_fecha.get()
     opcion_ANA_seleccionada = opcion_ANA.get()
-    nombre = entrada_nombre.get()
     telefono = entrada_telefono.get()
-    opcion_sexo_seleccionada = opcion_sexo.get()
+    nacimiento = entrada_nacimiento.get()
 
-    if fecha and opcion_ANA_seleccionada and nombre and telefono and opcion_sexo_seleccionada:
+    if fecha and opcion_ANA_seleccionada and telefono:
         with open("respuestas.txt", "a") as file:
-            file.write(f"{fecha}, {opcion_ANA_seleccionada}, {nombre}, {opcion_sexo_seleccionada}\n")
+            file.write(f"{fecha}, {opcion_ANA_seleccionada}, {telefono}, {nacimiento}\n")
         etiqueta_resultado.configure(text="Respuestas guardadas exitosamente", text_color="green")
     else:
         etiqueta_resultado.configure(text="Por favor complete todas las respuestas", text_color="red")
@@ -20,7 +19,7 @@ def guardar_respuestas(event=None):
 app = ctk.CTk()
 
 # Configurar la ventana principal
-app.geometry("640x800")
+app.geometry("400x400")
 app.title("Entrevista de ingreso al albergue Casa Monarca, Ayuda Humanitaria al Migrante, A.B.P.")
 
 
@@ -94,14 +93,6 @@ opcion_ANA6.pack(pady=5)
 opcion_ANA7 = ctk.CTkRadioButton(frame_opciones1, text="Adolescente no acompañado.", variable=opcion_ANA, value="Adolescente no acompañado")
 opcion_ANA7.pack(pady=5)
 
-# Etiqueta para el campo de nombre
-etiqueta_nombre = ctk.CTkLabel(frame_contenido, text="Nombre completo.", font = fuente_negrita)
-etiqueta_nombre.pack(pady=10)
-
-# Campo de entrada para el nombre
-entrada_nombre = ctk.CTkEntry(frame_contenido, width=200)
-entrada_nombre.pack(pady=10)
-
 # Etiqueta para el campo de teléfono
 etiqueta_telefono = ctk.CTkLabel(frame_contenido, text="Número telefónico de contacto.", font = fuente_negrita)
 etiqueta_telefono.pack(pady=10)
@@ -110,28 +101,13 @@ etiqueta_telefono.pack(pady=10)
 entrada_telefono = ctk.CTkEntry(frame_contenido, width=200)
 entrada_telefono.pack(pady=10)
 
-# Pregunta de opción múltiple
-etiqueta_sexo = ctk.CTkLabel(frame_contenido, text="Sexo.", font = fuente_negrita)
-etiqueta_sexo.pack(pady=10)
+# Etiqueta para el campo de entrada de nacimiento
+etiqueta_nacimiento = ctk.CTkLabel(frame_contenido, text="Fecha de nacimiento (DD/MM/AAAA):", font = fuente_negrita)
+etiqueta_nacimiento.pack(pady=10)
 
-# Variable para almacenar la opción seleccionada
-opcion_sexo = ctk.StringVar(value="")
-
-
-frame_opciones2 = ctk.CTkFrame(frame_contenido)
-frame_opciones2.pack(pady=10, padx=10, anchor="w")
-
-
-
-# Opciones de la pregunta
-opcion_sexo1 = ctk.CTkRadioButton(frame_opciones2, text="Mujer LGBTTTIQ+.", variable=opcion_sexo, value="Mujer LGBTTTIQ+")
-opcion_sexo1.pack(pady=5)
-opcion_sexo2 = ctk.CTkRadioButton(frame_opciones2, text="Mujer.", variable=opcion_sexo, value="Mujer")
-opcion_sexo2.pack(pady=5)
-opcion_sexo3 = ctk.CTkRadioButton(frame_opciones2, text="Hombre LGBTTTIQ+.", variable=opcion_sexo, value="Hombre LGBTTTIQ+")
-opcion_sexo3.pack(pady=5)
-opcion_sexo4 = ctk.CTkRadioButton(frame_opciones2, text="Hombre.", variable=opcion_sexo, value="Hombre.")
-opcion_sexo4.pack(pady=5)
+# Campo de entrada para nacimiento
+entrada_nacimiento = ctk.CTkEntry(frame_contenido, width=200)
+entrada_nacimiento.pack(pady=10)
 
 # Botón para guardar las respuestas
 boton_guardar = ctk.CTkButton(frame_contenido, text="Guardar Respuestas", command=guardar_respuestas)
