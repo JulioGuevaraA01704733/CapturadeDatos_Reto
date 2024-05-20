@@ -4,13 +4,16 @@ import tkinter as tk
 # Función para guardar las respuestas ingresadas
 def guardar_respuestas(event=None):
     fecha = entrada_fecha.get()
-    opcion_ANA_seleccionada = opcion_ANA.get()
+    ANA = opcion_ANA.get()
     telefono = entrada_telefono.get()
     nacimiento = entrada_nacimiento.get()
+    departamento = entrada_departamento.get()
+    estado_civil = opcion_EC.get()
+    tipo_poblacion = opcion_P.get()
 
-    if fecha and opcion_ANA_seleccionada and telefono:
+    if fecha and ANA and telefono and nacimiento and departamento and estado_civil and tipo_poblacion:
         with open("respuestas.txt", "a") as file:
-            file.write(f"{fecha}, {opcion_ANA_seleccionada}, {telefono}, {nacimiento}\n")
+            file.write(f"{fecha}, {ANA}, {telefono}, {nacimiento}, {departamento}, {estado_civil}, {tipo_poblacion}\n")
         etiqueta_resultado.configure(text="Respuestas guardadas exitosamente", text_color="green")
     else:
         etiqueta_resultado.configure(text="Por favor complete todas las respuestas", text_color="red")
@@ -108,6 +111,71 @@ etiqueta_nacimiento.pack(pady=10)
 # Campo de entrada para nacimiento
 entrada_nacimiento = ctk.CTkEntry(frame_contenido, width=200)
 entrada_nacimiento.pack(pady=10)
+
+# Etiqueta para el campo de entrada de departamento
+etiqueta_departamento = ctk.CTkLabel(frame_contenido, text="Departamento / Estado.", font = fuente_negrita)
+etiqueta_departamento.pack(pady=10)
+
+# Campo de entrada para departamento
+entrada_departamento = ctk.CTkEntry(frame_contenido, width=200)
+entrada_departamento.pack(pady=10)
+
+# Etiqueta para el campo de entrada de estado civil
+etiqueta_estado_civil = ctk.CTkLabel(frame_contenido, text="Estado Civil.", font = fuente_negrita)
+etiqueta_estado_civil.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_EC = ctk.StringVar(value="")
+
+
+
+frame_opciones2 = ctk.CTkFrame(frame_contenido)
+frame_opciones2.pack(pady=10, padx=10, anchor="w")
+
+
+
+# Opciones de la pregunta
+opcion_EC1 = ctk.CTkRadioButton(frame_opciones2, text="Casada / Casado.", variable=opcion_EC, value="Casado")
+opcion_EC1.pack(pady=5)
+opcion_EC2 = ctk.CTkRadioButton(frame_opciones2, text="Divorciada / Divorciado.", variable=opcion_EC, value="Divorciado")
+opcion_EC2.pack(pady=5)
+opcion_EC3 = ctk.CTkRadioButton(frame_opciones2, text="Soltera / Soltero.", variable=opcion_EC, value="Soltero")
+opcion_EC3.pack(pady=5)
+opcion_EC4 = ctk.CTkRadioButton(frame_opciones2, text="Separada / Separado.", variable=opcion_EC, value="Separado")
+opcion_EC4.pack(pady=5)
+opcion_EC5 = ctk.CTkRadioButton(frame_opciones2, text="Viuda / Viudo.", variable=opcion_EC, value="Viudo")
+opcion_EC5.pack(pady=5)
+opcion_EC6 = ctk.CTkRadioButton(frame_opciones2, text="Unión Libre.", variable=opcion_EC, value="Unión Libre")
+opcion_EC6.pack(pady=5)
+
+
+# Etiqueta para el campo de entrada de población
+etiqueta_poblacion = ctk.CTkLabel(frame_contenido, text="Tipo de población.", font = fuente_negrita)
+etiqueta_poblacion.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_P = ctk.StringVar(value="")
+
+
+
+frame_opciones3 = ctk.CTkFrame(frame_contenido)
+frame_opciones3.pack(pady=10, padx=10, anchor="w")
+
+
+
+# Opciones de la pregunta
+opcion_P1 = ctk.CTkRadioButton(frame_opciones3, text="Tránsito.", variable=opcion_P, value="Tránsito")
+opcion_P1.pack(pady=5)
+opcion_P2 = ctk.CTkRadioButton(frame_opciones3, text="MPP.", variable=opcion_P, value="MPP")
+opcion_P2.pack(pady=5)
+opcion_P3 = ctk.CTkRadioButton(frame_opciones3, text="Retornados.", variable=opcion_P, value="Retornados")
+opcion_P3.pack(pady=5)
+opcion_P4 = ctk.CTkRadioButton(frame_opciones3, text="Refugiados.", variable=opcion_P, value="Refugiados")
+opcion_P4.pack(pady=5)
+opcion_P5 = ctk.CTkRadioButton(frame_opciones3, text="Desplazados internos.", variable=opcion_P, value="Desplazados internos")
+opcion_P5.pack(pady=5)
+opcion_P6 = ctk.CTkRadioButton(frame_opciones3, text="Otra movilidad.", variable=opcion_P, value="Otra movilidad")
+opcion_P6.pack(pady=5)
 
 # Botón para guardar las respuestas
 boton_guardar = ctk.CTkButton(frame_contenido, text="Guardar Respuestas", command=guardar_respuestas)
