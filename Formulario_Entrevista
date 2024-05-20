@@ -126,7 +126,7 @@ frame_opciones2.pack(pady=10, padx=10, anchor="w")
 # Opciones de la pregunta
 opcion_sexo1 = ctk.CTkRadioButton(frame_opciones2, text="Mujer LGBTTTIQ+.", variable=opcion_sexo, value="Mujer LGBTTTIQ+")
 opcion_sexo1.pack(pady=5)
-opcion_sexo2 = ctk.CTkRadioButton(frame_opciones2, text="Mujer.", variable=opcion_sexo, value="Mujer LGBTTTIQ+")
+opcion_sexo2 = ctk.CTkRadioButton(frame_opciones2, text="Mujer.", variable=opcion_sexo, value="Mujer")
 opcion_sexo2.pack(pady=5)
 opcion_sexo3 = ctk.CTkRadioButton(frame_opciones2, text="Hombre LGBTTTIQ+.", variable=opcion_sexo, value="Hombre LGBTTTIQ+")
 opcion_sexo3.pack(pady=5)
