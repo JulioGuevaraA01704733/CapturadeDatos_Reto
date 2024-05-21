@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 
+
 # Función para guardar las respuestas ingresadas
 def guardar_respuestas(event=None):
     fecha = entrada_fecha.get()
@@ -10,21 +11,53 @@ def guardar_respuestas(event=None):
     departamento = entrada_departamento.get()
     estado_civil = opcion_EC.get()
     tipo_poblacion = opcion_P.get()
+    documento = [
+        opcion.get() for opcion in opciones_seleccionadas_documento if opcion.get()
+    ]
+    hijos = opcion_Hijos.get()
+    alfabetizado = opcion_Alfabetizado.get()
+    estudios = opcion_Estudios.get()
+    idioma = [
+        opcion.get() for opcion in opciones_seleccionadas_idioma if opcion.get()
+    ]
 
-    if fecha and ANA and telefono and nacimiento and departamento and estado_civil and tipo_poblacion:
+    integridad_respuestas = (
+        fecha
+        and ANA
+        and telefono
+        and nacimiento
+        and departamento
+        and estado_civil
+        and tipo_poblacion
+        and documento
+        and hijos
+        and alfabetizado
+        and estudios
+        and idioma
+    )
+
+    if integridad_respuestas:
         with open("respuestas.txt", "a") as file:
-            file.write(f"{fecha}, {ANA}, {telefono}, {nacimiento}, {departamento}, {estado_civil}, {tipo_poblacion}\n")
-        etiqueta_resultado.configure(text="Respuestas guardadas exitosamente", text_color="green")
+            file.write(
+                f"{fecha}, {ANA}, {telefono}, {nacimiento}, {departamento}, {estado_civil}, {tipo_poblacion}, {', '.join(documento)}, {hijos}, {alfabetizado}, {estudios}, {', '.join(idioma)}\n"
+            )
+        etiqueta_resultado.configure(
+            text="Respuestas guardadas exitosamente", text_color="green"
+        )
     else:
-        etiqueta_resultado.configure(text="Por favor complete todas las respuestas", text_color="red")
+        etiqueta_resultado.configure(
+            text="Por favor complete todas las respuestas", text_color="red"
+        )
+
 
 # Inicializar la aplicación
 app = ctk.CTk()
 
 # Configurar la ventana principal
 app.geometry("400x400")
-app.title("Entrevista de ingreso al albergue Casa Monarca, Ayuda Humanitaria al Migrante, A.B.P.")
-
+app.title(
+    "Entrevista de ingreso al albergue Casa Monarca, Ayuda Humanitaria al Migrante, A.B.P."
+)
 
 
 # Crear un contenedor para el canvas y la scrollbar
@@ -36,7 +69,9 @@ canvas = tk.Canvas(frame_contenedor)
 canvas.pack(side="left", fill="both", expand=True)
 
 # Añadir una scrollbar vertical al contenedor
-scrollbar = ctk.CTkScrollbar(frame_contenedor, orientation="vertical", command=canvas.yview)
+scrollbar = ctk.CTkScrollbar(
+    frame_contenedor, orientation="vertical", command=canvas.yview
+)
 scrollbar.pack(side="right", fill="y")
 
 # Configurar el canvas para usar la scrollbar
@@ -46,58 +81,95 @@ canvas.configure(yscrollcommand=scrollbar.set)
 frame_contenido = ctk.CTkFrame(canvas)
 canvas.create_window((0, 0), window=frame_contenido, anchor="nw")
 
+
 # Función para actualizar el tamaño del canvas cuando se añaden nuevos widgets
 def actualizar_scrollregion(event):
     canvas.configure(scrollregion=canvas.bbox("all"))
+
 
 # Vincular la función de actualización al evento de cambio de tamaño del frame contenido
 frame_contenido.bind("<Configure>", actualizar_scrollregion)
 
 
-
-#Fuente negrita
+# Fuente negrita
 fuente_negrita = ctk.CTkFont(family="Helvetica", size=14, weight="bold")
 
 # Etiqueta para el campo de entrada de la fecha
-etiqueta_fecha = ctk.CTkLabel(frame_contenido, text="Fecha de atención (DD/MM/AAAA):", font = fuente_negrita)
+etiqueta_fecha = ctk.CTkLabel(
+    frame_contenido, text="Fecha de atención (DD/MM/AAAA):", font=fuente_negrita
+)
 etiqueta_fecha.pack(pady=10)
 
 # Campo de entrada para la fecha
 entrada_fecha = ctk.CTkEntry(frame_contenido, width=200)
 entrada_fecha.pack(pady=10)
 
-# Pregunta de opción múltiple 
-etiqueta_ANA = ctk.CTkLabel(frame_contenido, text="Adulto, NNA, NNAnA", font = fuente_negrita)
+# Pregunta de opción múltiple
+etiqueta_ANA = ctk.CTkLabel(
+    frame_contenido, text="Adulto, NNA, NNAnA", font=fuente_negrita
+)
 etiqueta_ANA.pack(pady=10)
 
 # Variable para almacenar la opción seleccionada
 opcion_ANA = ctk.StringVar(value="")
 
 
-
 frame_opciones1 = ctk.CTkFrame(frame_contenido)
 frame_opciones1.pack(pady=10, padx=10, anchor="w")
 
 
-
 # Opciones de la pregunta
-opcion_ANA1 = ctk.CTkRadioButton(frame_opciones1, text="Adulto.", variable=opcion_ANA, value="Adulto")
+opcion_ANA1 = ctk.CTkRadioButton(
+    frame_opciones1, text="Adulto.", variable=opcion_ANA, value="Adulto"
+)
 opcion_ANA1.pack(pady=5)
-opcion_ANA2 = ctk.CTkRadioButton(frame_opciones1, text="Niña acompañada.", variable=opcion_ANA, value="Niña acompañada")
+opcion_ANA2 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Niña acompañada.",
+    variable=opcion_ANA,
+    value="Niña acompañada",
+)
 opcion_ANA2.pack(pady=5)
-opcion_ANA3 = ctk.CTkRadioButton(frame_opciones1, text="Niño acompañado.", variable=opcion_ANA, value="Niño acompañado")
+opcion_ANA3 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Niño acompañado.",
+    variable=opcion_ANA,
+    value="Niño acompañado",
+)
 opcion_ANA3.pack(pady=5)
-opcion_ANA4 = ctk.CTkRadioButton(frame_opciones1, text="Adolescente acompañado.", variable=opcion_ANA, value="Adolescente acompañado")
+opcion_ANA4 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Adolescente acompañado.",
+    variable=opcion_ANA,
+    value="Adolescente acompañado",
+)
 opcion_ANA4.pack(pady=5)
-opcion_ANA5 = ctk.CTkRadioButton(frame_opciones1, text="Niña no acompañada.", variable=opcion_ANA, value="Niña no acompañada")
+opcion_ANA5 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Niña no acompañada.",
+    variable=opcion_ANA,
+    value="Niña no acompañada",
+)
 opcion_ANA5.pack(pady=5)
-opcion_ANA6 = ctk.CTkRadioButton(frame_opciones1, text="Niño no acompañado.", variable=opcion_ANA, value="Niño no acompañado")
+opcion_ANA6 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Niño no acompañado.",
+    variable=opcion_ANA,
+    value="Niño no acompañado",
+)
 opcion_ANA6.pack(pady=5)
-opcion_ANA7 = ctk.CTkRadioButton(frame_opciones1, text="Adolescente no acompañado.", variable=opcion_ANA, value="Adolescente no acompañado")
+opcion_ANA7 = ctk.CTkRadioButton(
+    frame_opciones1,
+    text="Adolescente no acompañado.",
+    variable=opcion_ANA,
+    value="Adolescente no acompañado",
+)
 opcion_ANA7.pack(pady=5)
 
 # Etiqueta para el campo de teléfono
-etiqueta_telefono = ctk.CTkLabel(frame_contenido, text="Número telefónico de contacto.", font = fuente_negrita)
+etiqueta_telefono = ctk.CTkLabel(
+    frame_contenido, text="Número telefónico de contacto.", font=fuente_negrita
+)
 etiqueta_telefono.pack(pady=10)
 
 # Campo de entrada para el teléfono
@@ -105,7 +177,9 @@ entrada_telefono = ctk.CTkEntry(frame_contenido, width=200)
 entrada_telefono.pack(pady=10)
 
 # Etiqueta para el campo de entrada de nacimiento
-etiqueta_nacimiento = ctk.CTkLabel(frame_contenido, text="Fecha de nacimiento (DD/MM/AAAA):", font = fuente_negrita)
+etiqueta_nacimiento = ctk.CTkLabel(
+    frame_contenido, text="Fecha de nacimiento (DD/MM/AAAA):", font=fuente_negrita
+)
 etiqueta_nacimiento.pack(pady=10)
 
 # Campo de entrada para nacimiento
@@ -113,7 +187,9 @@ entrada_nacimiento = ctk.CTkEntry(frame_contenido, width=200)
 entrada_nacimiento.pack(pady=10)
 
 # Etiqueta para el campo de entrada de departamento
-etiqueta_departamento = ctk.CTkLabel(frame_contenido, text="Departamento / Estado.", font = fuente_negrita)
+etiqueta_departamento = ctk.CTkLabel(
+    frame_contenido, text="Departamento / Estado.", font=fuente_negrita
+)
 etiqueta_departamento.pack(pady=10)
 
 # Campo de entrada para departamento
@@ -121,64 +197,254 @@ entrada_departamento = ctk.CTkEntry(frame_contenido, width=200)
 entrada_departamento.pack(pady=10)
 
 # Etiqueta para el campo de entrada de estado civil
-etiqueta_estado_civil = ctk.CTkLabel(frame_contenido, text="Estado Civil.", font = fuente_negrita)
+etiqueta_estado_civil = ctk.CTkLabel(
+    frame_contenido, text="Estado Civil.", font=fuente_negrita
+)
 etiqueta_estado_civil.pack(pady=10)
 
 # Variable para almacenar la opción seleccionada
 opcion_EC = ctk.StringVar(value="")
 
-
-
 frame_opciones2 = ctk.CTkFrame(frame_contenido)
 frame_opciones2.pack(pady=10, padx=10, anchor="w")
 
-
-
 # Opciones de la pregunta
-opcion_EC1 = ctk.CTkRadioButton(frame_opciones2, text="Casada / Casado.", variable=opcion_EC, value="Casado")
+opcion_EC1 = ctk.CTkRadioButton(
+    frame_opciones2, text="Casada / Casado.", variable=opcion_EC, value="Casado"
+)
 opcion_EC1.pack(pady=5)
-opcion_EC2 = ctk.CTkRadioButton(frame_opciones2, text="Divorciada / Divorciado.", variable=opcion_EC, value="Divorciado")
+opcion_EC2 = ctk.CTkRadioButton(
+    frame_opciones2,
+    text="Divorciada / Divorciado.",
+    variable=opcion_EC,
+    value="Divorciado",
+)
 opcion_EC2.pack(pady=5)
-opcion_EC3 = ctk.CTkRadioButton(frame_opciones2, text="Soltera / Soltero.", variable=opcion_EC, value="Soltero")
+opcion_EC3 = ctk.CTkRadioButton(
+    frame_opciones2, text="Soltera / Soltero.", variable=opcion_EC, value="Soltero"
+)
 opcion_EC3.pack(pady=5)
-opcion_EC4 = ctk.CTkRadioButton(frame_opciones2, text="Separada / Separado.", variable=opcion_EC, value="Separado")
+opcion_EC4 = ctk.CTkRadioButton(
+    frame_opciones2, text="Separada / Separado.", variable=opcion_EC, value="Separado"
+)
 opcion_EC4.pack(pady=5)
-opcion_EC5 = ctk.CTkRadioButton(frame_opciones2, text="Viuda / Viudo.", variable=opcion_EC, value="Viudo")
+opcion_EC5 = ctk.CTkRadioButton(
+    frame_opciones2, text="Viuda / Viudo.", variable=opcion_EC, value="Viudo"
+)
 opcion_EC5.pack(pady=5)
-opcion_EC6 = ctk.CTkRadioButton(frame_opciones2, text="Unión Libre.", variable=opcion_EC, value="Unión Libre")
+opcion_EC6 = ctk.CTkRadioButton(
+    frame_opciones2, text="Unión Libre.", variable=opcion_EC, value="Unión Libre"
+)
 opcion_EC6.pack(pady=5)
 
-
 # Etiqueta para el campo de entrada de población
-etiqueta_poblacion = ctk.CTkLabel(frame_contenido, text="Tipo de población.", font = fuente_negrita)
+etiqueta_poblacion = ctk.CTkLabel(
+    frame_contenido, text="Tipo de población.", font=fuente_negrita
+)
 etiqueta_poblacion.pack(pady=10)
 
 # Variable para almacenar la opción seleccionada
 opcion_P = ctk.StringVar(value="")
 
-
-
 frame_opciones3 = ctk.CTkFrame(frame_contenido)
 frame_opciones3.pack(pady=10, padx=10, anchor="w")
 
-
-
 # Opciones de la pregunta
-opcion_P1 = ctk.CTkRadioButton(frame_opciones3, text="Tránsito.", variable=opcion_P, value="Tránsito")
+opcion_P1 = ctk.CTkRadioButton(
+    frame_opciones3, text="Tránsito.", variable=opcion_P, value="Tránsito"
+)
 opcion_P1.pack(pady=5)
-opcion_P2 = ctk.CTkRadioButton(frame_opciones3, text="MPP.", variable=opcion_P, value="MPP")
+opcion_P2 = ctk.CTkRadioButton(
+    frame_opciones3, text="MPP.", variable=opcion_P, value="MPP"
+)
 opcion_P2.pack(pady=5)
-opcion_P3 = ctk.CTkRadioButton(frame_opciones3, text="Retornados.", variable=opcion_P, value="Retornados")
+opcion_P3 = ctk.CTkRadioButton(
+    frame_opciones3, text="Retornados.", variable=opcion_P, value="Retornados"
+)
 opcion_P3.pack(pady=5)
-opcion_P4 = ctk.CTkRadioButton(frame_opciones3, text="Refugiados.", variable=opcion_P, value="Refugiados")
+opcion_P4 = ctk.CTkRadioButton(
+    frame_opciones3, text="Refugiados.", variable=opcion_P, value="Refugiados"
+)
 opcion_P4.pack(pady=5)
-opcion_P5 = ctk.CTkRadioButton(frame_opciones3, text="Desplazados internos.", variable=opcion_P, value="Desplazados internos")
+opcion_P5 = ctk.CTkRadioButton(
+    frame_opciones3,
+    text="Desplazados internos.",
+    variable=opcion_P,
+    value="Desplazados internos",
+)
 opcion_P5.pack(pady=5)
-opcion_P6 = ctk.CTkRadioButton(frame_opciones3, text="Otra movilidad.", variable=opcion_P, value="Otra movilidad")
+opcion_P6 = ctk.CTkRadioButton(
+    frame_opciones3, text="Otra movilidad.", variable=opcion_P, value="Otra movilidad"
+)
 opcion_P6.pack(pady=5)
 
+# Etiqueta para el campo de documento
+etiqueta_pregunta = ctk.CTkLabel(
+    frame_contenido, text="Documento de identidad", font=fuente_negrita
+)
+etiqueta_pregunta.pack(pady=10, padx=10, anchor="w")
+
+opciones_seleccionadas_documento = []
+frame_opciones4 = ctk.CTkFrame(frame_contenido)
+frame_opciones4.pack(pady=10, padx=10, anchor="w")
+
+opciones_documento = [
+    "Tarjeta de identidad de país de origen",
+    "Certificado de nacionalidad / Acta de Nacimiento",
+    "Pasaporte",
+    "Curp",
+    "Documento Migratorio",
+    "Ningún documento",
+]
+
+for documento in opciones_documento:
+    var = tk.StringVar(value="")
+    opciones_seleccionadas_documento.append(var)
+    checkbox = ctk.CTkCheckBox(
+        frame_opciones4, text=documento, variable=var, onvalue=documento, offvalue=""
+    )
+    checkbox.pack(anchor="w")
+
+# Etiqueta para el campo hijos
+etiqueta_hijos = ctk.CTkLabel(frame_contenido, text="Hijos.", font=fuente_negrita)
+etiqueta_hijos.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_Hijos = ctk.StringVar(value="")
+
+frame_opciones5 = ctk.CTkFrame(frame_contenido)
+frame_opciones5.pack(pady=10, padx=10, anchor="w")
+
+# Opciones de la pregunta
+opcion_H1 = ctk.CTkRadioButton(
+    frame_opciones5, text="Si.", variable=opcion_Hijos, value="Si"
+)
+opcion_H1.pack(pady=5)
+opcion_H2 = ctk.CTkRadioButton(
+    frame_opciones5, text="No.", variable=opcion_Hijos, value="No"
+)
+opcion_H2.pack(pady=5)
+
+# Etiqueta para alfabetizado
+etiqueta_alfabetizado = ctk.CTkLabel(
+    frame_contenido, text="¿Usted sabe leer y escribir?", font=fuente_negrita
+)
+etiqueta_alfabetizado.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_Alfabetizado = ctk.StringVar(value="")
+
+frame_opciones6 = ctk.CTkFrame(frame_contenido)
+frame_opciones6.pack(pady=10, padx=10, anchor="w")
+
+# Opciones de la pregunta
+opcion_Alfabetizado1 = ctk.CTkRadioButton(
+    frame_opciones6, text="Si.", variable=opcion_Alfabetizado, value="Si"
+)
+opcion_Alfabetizado1.pack(pady=5)
+opcion_Alfabetizado2 = ctk.CTkRadioButton(
+    frame_opciones6, text="No.", variable=opcion_Alfabetizado, value="No"
+)
+opcion_Alfabetizado2.pack(pady=5)
+
+# Etiqueta para el campo de entrada de grado de estudios
+etiqueta_estudios = ctk.CTkLabel(
+    frame_contenido, text="¿Cuál fue su último grado de estudio?", font=fuente_negrita
+)
+etiqueta_estudios.pack(pady=10)
+
+# Variable para almacenar la opción seleccionada
+opcion_Estudios = ctk.StringVar(value="")
+
+frame_opciones8 = ctk.CTkFrame(frame_contenido)
+frame_opciones8.pack(pady=10, padx=10, anchor="w")
+
+# Opciones de la pregunta
+opcion_Estudios1 = ctk.CTkRadioButton(
+    frame_opciones8, text="Preescolar.", variable=opcion_Estudios, value="Preescolar"
+)
+opcion_Estudios1.pack(pady=5)
+opcion_Estudios2 = ctk.CTkRadioButton(
+    frame_opciones8, text="Primaria.", variable=opcion_Estudios, value="Primaria"
+)
+opcion_Estudios2.pack(pady=5)
+opcion_Estudios3 = ctk.CTkRadioButton(
+    frame_opciones8, text="Secundaria.", variable=opcion_Estudios, value="Secundaria"
+)
+opcion_Estudios3.pack(pady=5)
+opcion_Estudios4 = ctk.CTkRadioButton(
+    frame_opciones8,
+    text="Preparatoria.",
+    variable=opcion_Estudios,
+    value="Preparatoria",
+)
+opcion_Estudios4.pack(pady=5)
+opcion_Estudios5 = ctk.CTkRadioButton(
+    frame_opciones8,
+    text="Bachillerato técnico.",
+    variable=opcion_Estudios,
+    value="Bachillerato técnico",
+)
+opcion_Estudios5.pack(pady=5)
+opcion_Estudios6 = ctk.CTkRadioButton(
+    frame_opciones8,
+    text="Licenciatura.",
+    variable=opcion_Estudios,
+    value="Licenciatura",
+)
+opcion_Estudios6.pack(pady=5)
+opcion_Estudios7 = ctk.CTkRadioButton(
+    frame_opciones8,
+    text="Sin escolarizar.",
+    variable=opcion_Estudios,
+    value="Sin escolarizar",
+)
+opcion_Estudios7.pack(pady=5)
+
+# Etiqueta para el campo de grado de estudios
+etiqueta_grado = ctk.CTkLabel(
+    frame_contenido, text="¿Cuál fue su último grado académico?", font=fuente_negrita
+)
+etiqueta_grado.pack(pady=10)
+
+# Campo de entrada para departamento
+entrada_grado = ctk.CTkEntry(frame_contenido, width=200)
+entrada_grado.pack(pady=10)
+
+# Etiqueta para el campo de idioma
+etiqueta_idioma = ctk.CTkLabel(
+    frame_contenido, text="Idiomas que domina.", font=fuente_negrita
+)
+etiqueta_idioma.pack(pady=10, padx=10, anchor="w")
+
+opciones_seleccionadas_idioma = []
+frame_opciones9 = ctk.CTkFrame(frame_contenido)
+frame_opciones9.pack(pady=10, padx=10, anchor="w")
+
+opciones_idioma = [
+    "Inglés.",
+    "Español.",
+    "Francés.",
+    "Criollo haitiano.",
+    "Garífona.",
+    "Portugués.",
+    "Otro idioma."
+]
+
+for idioma in opciones_idioma:
+    var = tk.StringVar(value="")
+    opciones_seleccionadas_idioma.append(var)
+    checkbox = ctk.CTkCheckBox(
+        frame_opciones9, text=idioma, variable=var, onvalue=idioma, offvalue=""
+    )
+    checkbox.pack(anchor="w")
+
+
+
 # Botón para guardar las respuestas
-boton_guardar = ctk.CTkButton(frame_contenido, text="Guardar Respuestas", command=guardar_respuestas)
+boton_guardar = ctk.CTkButton(
+    frame_contenido, text="Guardar Respuestas", command=guardar_respuestas
+)
 boton_guardar.pack(pady=20)
 
 # Etiqueta para mostrar el resultado
