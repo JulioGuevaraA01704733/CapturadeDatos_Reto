@@ -125,6 +125,442 @@ L13Label.grid(row=13, column = 0, padx=1,pady=5,ipady=0,sticky="e")
 L13Entry = customtkinter.CTkTextbox(tab2, width = 300, height = 10)
 L13Entry.grid(row=13, column = 1, padx=1,pady=5,ipady=0,sticky="e")
 
+# Pestaña: Registro Humanitario
+def getHText():
+    entries = [H1Entry, 
+               H2Entry, 
+               H3Entry, 
+               H4Entry,
+               H5Entry,
+               H6Entry,
+               H7Entry,
+               H8Entry,
+               H9Entry,
+               H10Entry,
+               H11Entry,
+               H12Entry,
+               H13Entry,
+               H14Entry,
+               H15Entry,
+               H16Entry,
+               H17Entry,
+               H18Entry,
+               H19Entry,
+               H20Entry,
+               H21Entry,
+               H22Entry,
+               H23Entry,
+               H24Entry,
+               H25Entry,
+               H26Entry,
+               H27Entry,
+               H28Entry,
+               H29Entry,
+               H30Entry,
+               H31Entry,
+               H32Entry,
+               H33Entry,
+               H34Entry,
+               H35Entry,
+               H36Entry,
+               H40Entry,
+               H41Entry,
+               H42Entry,
+               H43Entry]
+    return [entry.get(0.0, "end-1c") for entry in entries]
+
+H1Label = customtkinter.CTkLabel(tab4, text="Fecha de atención (DD/MM/AAAA):  ", fg_color="transparent")
+H1Label.grid(row=0, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H1Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H1Entry.grid(row=0, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H2Label = customtkinter.CTkLabel(tab4, text="Adulto, NNA, NNAnA:  ", fg_color="transparent")
+H2Label.grid(row=1, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H2Entry = customtkinter.CTkOptionMenu(tab4, values=["Adulto",
+                                                    "Niña acompañada.",
+                                                    "Niño acompañado.",
+                                                    "Adolescente acompañado.",
+                                                    "Niña no acompañada.",
+                                                    "Niño no acompañado.",
+                                                    "Adolescente no acompañado."])
+H2Entry.grid(row=1, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H3Label = customtkinter.CTkLabel(tab4, text="Número telefónico de contacto.  ", fg_color="transparent")
+H3Label.grid(row=2, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H3Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H3Entry.grid(row=2, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H4Label = customtkinter.CTkLabel(tab4, text="Fecha de nacimiento (DD/MM/AAAA):  ", fg_color="transparent")
+H4Label.grid(row=3, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H4Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H4Entry.grid(row=3, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H5Label = customtkinter.CTkLabel(tab4, text="Departamento / Estado.  ", fg_color="transparent")
+H5Label.grid(row=4, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H5Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H5Entry.grid(row=4, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H6Label = customtkinter.CTkLabel(tab4, text="Estado Civil.  ", fg_color="transparent")
+H6Label.grid(row=5, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H6Entry = customtkinter.CTkOptionMenu(tab4, values=["Casada / Casado.",
+                                                    "Divorciada / Divorciado.",
+                                                    "Soltera / Soltero.",
+                                                    "Separada / Separado.",
+                                                    "Viuda / Viudo.",
+                                                    "Unión Libre."])
+H6Entry.grid(row=5, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H7Label = customtkinter.CTkLabel(tab4, text="Tipo de población.  ", fg_color="transparent")
+H7Label.grid(row=6, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H7Entry = customtkinter.CTkOptionMenu(tab4, values=["Tránsito.",
+                                                    "MPP.",
+                                                    "Retornados.",
+                                                    "Refugiados.",
+                                                    "Desplazados internos.",
+                                                    "Otra movilidad."]) # ABRIR UNA VENTANA EMERGENTE PARA ENTRADA DE TEXTO
+H7Entry.grid(row=6, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H8Label = customtkinter.CTkLabel(tab4, text="Documento de identidad.  ", fg_color="transparent")
+H8Label.grid(row=7, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+
+# Variables para cada opción de checkbox
+tarjeta_identidad_var = customtkinter.StringVar()
+cerfificadonacionalidad_var = customtkinter.StringVar()
+pasaporte_var = customtkinter.StringVar()
+curp_var = customtkinter.StringVar()
+documentomigratorio_var = customtkinter.StringVar()
+ninguno_var = customtkinter.StringVar()
+
+# Crear los CheckBox
+tarjeta_identidad_cb = customtkinter.CTkCheckBox(tab4, text="Tarjeta de identidad de país de origen", variable=tarjeta_identidad_var, onvalue="Tarjeta de identidad de país de origen", offvalue="")
+cerfificadonacionalidad_cb = customtkinter.CTkCheckBox(tab4, text="Certificado de nacionalidad / Acta de Nacimiento", variable=cerfificadonacionalidad_var, onvalue="Certificado de nacionalidad / Acta de Nacimiento", offvalue="")
+pasaporte_cb = customtkinter.CTkCheckBox(tab4, text="Pasaporte", variable=pasaporte_var, onvalue="Pasaporte", offvalue="")
+curp_cb = customtkinter.CTkCheckBox(tab4, text="Curp", variable=curp_var, onvalue="Curp", offvalue="")
+documentomigratorio_cb = customtkinter.CTkCheckBox(tab4, text="Documento Migratorio", variable=documentomigratorio_var, onvalue="Documento Migratorio", offvalue="")
+ninguno_cb = customtkinter.CTkCheckBox(tab4, text="Ningún documento", variable=ninguno_var, onvalue="Ningún documento", offvalue="")
+
+# Colocar los CheckBox en el grid
+tarjeta_identidad_cb.grid(row=7, column=1, padx=1, pady=5, sticky="w")
+cerfificadonacionalidad_cb.grid(row=8, column=1, padx=1, pady=5, sticky="w")
+pasaporte_cb.grid(row=9, column=1, padx=1, pady=5, sticky="w")
+curp_cb.grid(row=10, column=1, padx=1, pady=5, sticky="w")
+documentomigratorio_cb.grid(row=11, column=1, padx=1, pady=5, sticky="w")
+ninguno_cb.grid(row=12, column=1, padx=1, pady=5, sticky="w")
+
+H8Entry = []
+if tarjeta_identidad_var.get():
+    H8Entry.append(tarjeta_identidad_var.get())
+if cerfificadonacionalidad_var.get():
+    H8Entry.append(cerfificadonacionalidad_var.get())
+if pasaporte_var.get():
+    H8Entry.append(pasaporte_var.get())
+if curp_var.get():
+    H8Entry.append(curp_var.get())
+if documentomigratorio_var.get():
+    H8Entry.append(documentomigratorio_var.get())
+if ninguno_var.get():
+    H8Entry.append(ninguno_var.get())
+
+H9Label = customtkinter.CTkLabel(tab4, text="Hijos.  ", fg_color="transparent")
+H9Label.grid(row=13, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H9Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H9Entry.grid(row=13, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H10Label = customtkinter.CTkLabel(tab4, text="¿Usted sabe leer y escribir?  ", fg_color="transparent")
+H10Label.grid(row=14, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H10Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H10Entry.grid(row=14, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H11Label = customtkinter.CTkLabel(tab4, text="¿Cuál fue su último grado de estudio?  ", fg_color="transparent")
+H11Label.grid(row=15, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H11Entry = customtkinter.CTkOptionMenu(tab4, values=["Preescolar.",
+                                                     "Primaria.",
+                                                     "Secundaria",
+                                                     "Preparatoria",
+                                                     "Bachillerato técnico",
+                                                     "Licenciatura",
+                                                     "Sin escolarizar"])
+H11Entry.grid(row=15, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H12Label = customtkinter.CTkLabel(tab4, text="¿Cuál fue su último grado académico?  ", fg_color="transparent")
+H12Label.grid(row=16, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H12Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H12Entry.grid(row=16, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H13Label = customtkinter.CTkLabel(tab4, text="Idiomas que domina.  ", fg_color="transparent")
+H13Label.grid(row=17, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+
+# Variables para cada opción de checkbox
+Ingles_var = customtkinter.StringVar()
+Español_var = customtkinter.StringVar()
+Frances_var = customtkinter.StringVar()
+Criollo_var = customtkinter.StringVar()
+Garifona_var = customtkinter.StringVar()
+Portugues_var = customtkinter.StringVar()
+OtroIdioma_var = customtkinter.StringVar()
+
+# Crear los CheckBox
+Ingles_cb = customtkinter.CTkCheckBox(tab4, text="Inglés.", variable=Ingles_var, onvalue="Inglés", offvalue="")
+Español_cb = customtkinter.CTkCheckBox(tab4, text="Español.", variable=Español_var, onvalue="Español", offvalue="")
+Frances_cb = customtkinter.CTkCheckBox(tab4, text="Francés.", variable=Frances_var, onvalue="Francés", offvalue="")
+Criollo_cb = customtkinter.CTkCheckBox(tab4, text="Criollo haitiano.", variable=Criollo_var, onvalue="Criollo haitiano", offvalue="")
+Garifona_cb = customtkinter.CTkCheckBox(tab4, text="Garífona.", variable=Garifona_var, onvalue="Garífona", offvalue="")
+Portugues_cb = customtkinter.CTkCheckBox(tab4, text="Portugués.", variable=Portugues_var, onvalue="Portugués", offvalue="")
+OtroIdioma_cb = customtkinter.CTkCheckBox(tab4, text="Otro idioma.", variable=OtroIdioma_var, onvalue="Otro idioma", offvalue="")
+
+# Colocar los CheckBox en el grid
+Ingles_cb.grid(row=17, column=1, padx=1, pady=5, sticky="w")
+Español_cb.grid(row=18, column=1, padx=1, pady=5, sticky="w")
+Frances_cb.grid(row=19, column=1, padx=1, pady=5, sticky="w")
+Criollo_cb.grid(row=20, column=1, padx=1, pady=5, sticky="w")
+Garifona_cb.grid(row=21, column=1, padx=1, pady=5, sticky="w")
+Portugues_cb.grid(row=22, column=1, padx=1, pady=5, sticky="w")
+OtroIdioma_cb.grid(row=23, column=1, padx=1, pady=5, sticky="w")
+
+H13Entry = []
+if Ingles_var.get():
+    H13Entry.append(Ingles_var.get())
+if Español_var.get():
+    H13Entry.append(Español_var.get())
+if Frances_var.get():
+    H13Entry.append(Frances_var.get())
+if Criollo_var.get():
+    H13Entry.append(Criollo_var.get())
+if Garifona_var.get():
+    H13Entry.append(Garifona_var.get())
+if Portugues_var.get():
+    H13Entry.append(Portugues_var.get())
+if OtroIdioma_var.get():
+    H13Entry.append(OtroIdioma_var.get())
+
+H14Label = customtkinter.CTkLabel(tab4, text="Fecha en que salió de su país de origen(DD/MM/AAAA):  ", fg_color="transparent")
+H14Label.grid(row=24, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H14Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H14Entry.grid(row=24, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H15Label = customtkinter.CTkLabel(tab4, text="¿Cómo se encuentra viajando?  ", fg_color="transparent")
+H15Label.grid(row=25, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H15Entry = customtkinter.CTkOptionMenu(tab4, values=["Sola/o", "Acompañada/o"])
+H15Entry.grid(row=25, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H16Label = customtkinter.CTkLabel(tab4, text="¿Cómo viajó?  ", fg_color="transparent")
+H16Label.grid(row=26, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H16Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H16Entry.grid(row=26, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H17Label = customtkinter.CTkLabel(tab4, text="¿Por qué razón tomó la decisión de salir de su país?  ", fg_color="transparent")
+H17Label.grid(row=27, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H17Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H17Entry.grid(row=27, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H18Label = customtkinter.CTkLabel(tab4, text="Durante su viaje desde que salió de su país hasta antes de llegar a México, ¿Usted sufrió de algún abuso a sus Derechos Humanos?  ", fg_color="transparent")
+H18Label.grid(row=28, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H18Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H18Entry.grid(row=28, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H19Label = customtkinter.CTkLabel(tab4, text="Cuando usted entró a territorio mexicano, ¿Usted vivió algún abuso o agresión?  ", fg_color="transparent")
+H19Label.grid(row=29, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H19Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H19Entry.grid(row=29, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H20Label = customtkinter.CTkLabel(tab4, text="En algún momento de su camino, ¿Usted le pagó a algún guía para viajar?  ", fg_color="transparent")
+H20Label.grid(row=30, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H20Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H20Entry.grid(row=30, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H21Label = customtkinter.CTkLabel(tab4, text="Fecha en que ingresó a México (DD/MM/AAAA):  ", fg_color="transparent")
+H21Label.grid(row=31, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H21Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H21Entry.grid(row=31, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H22Label = customtkinter.CTkLabel(tab4, text="¿Por dónde ingresó a México?  ", fg_color="transparent")
+H22Label.grid(row=32, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H22Entry = customtkinter.CTkOptionMenu(tab4, values=["Tapachula.",
+                                                     "Tenosoique."
+                                                     "Chetumal.",
+                                                     "Palenque.",
+                                                     "Matamoros.",
+                                                     "Reynosa.",
+                                                     "Veracruz.",
+                                                     "Tabasco.",
+                                                     "Chiapas"])
+H22Entry.grid(row=32, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H23Label = customtkinter.CTkLabel(tab4, text="¿Cuál es su destino final?  ", fg_color="transparent")
+H23Label.grid(row=32, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H23Entry = customtkinter.CTkOptionMenu(tab4, values=["México.",
+                                                     "Estados Unidos.",
+                                                     "Regresar a mi país de origen."])
+H23Entry.grid(row=32, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H24Label = customtkinter.CTkLabel(tab4, text="¿Cuenta con una red de apoyo en Monterrey?  ", fg_color="transparent")
+H24Label.grid(row=33, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H24Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H24Entry.grid(row=33, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H25Label = customtkinter.CTkLabel(tab4, text="¿Usted ha intentado ingresar a Estados Unidos?  ", fg_color="transparent")
+H25Label.grid(row=34, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H25Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H25Entry.grid(row=34, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H26Label = customtkinter.CTkLabel(tab4, text="¿Usted cuenta con una red de apoyo en Estados Unidos?  ", fg_color="transparent")
+H26Label.grid(row=35, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H26Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H26Entry.grid(row=35, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H27Label = customtkinter.CTkLabel(tab4, text="Descripción de la red de apoyo con la que cuenta en Estados Unidos.  ", fg_color="transparent")
+H27Label.grid(row=36, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H27Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H27Entry.grid(row=36, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H28Label = customtkinter.CTkLabel(tab4, text="¿Usted ha estado en alguna estación migratoria?  ", fg_color="transparent")
+H28Label.grid(row=37, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H28Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H28Entry.grid(row=37, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H29Label = customtkinter.CTkLabel(tab4, text="Ante las vivencias de abuso de autoridad, agresiones y vulnerabilidad a Derechos Humanos, ¿Usted interpuso una denuncia formal?  ", fg_color="transparent")
+H29Label.grid(row=38, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H29Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H29Entry.grid(row=38, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H30Label = customtkinter.CTkLabel(tab4, text="¿Usted puede regresar a su país?  ", fg_color="transparent")
+H30Label.grid(row=39, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H30Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H30Entry.grid(row=39, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H31Label = customtkinter.CTkLabel(tab4, text="¿Actualmente usted padece alguna enfermedad?  ", fg_color="transparent")
+H31Label.grid(row=40, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H31Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H31Entry.grid(row=40, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H32Label = customtkinter.CTkLabel(tab4, text="¿Se encuentra o encontraba en algún tratamiento médico?  ", fg_color="transparent")
+H32Label.grid(row=41, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H32Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H32Entry.grid(row=41, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H33Label = customtkinter.CTkLabel(tab4, text="¿Usted padece algún tipo de alergia?  ", fg_color="transparent")
+H33Label.grid(row=42, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H33Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H33Entry.grid(row=42, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H34Label = customtkinter.CTkLabel(tab4, text="En su trayecto por México, ¿Usted se ha estado en algún otro albergue?  ", fg_color="transparent")
+H34Label.grid(row=43, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H34Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H34Entry.grid(row=43, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H35Label = customtkinter.CTkLabel(tab4, text="¿Se le brindó acceso al albergue de Casa Monarca?  ", fg_color="transparent")
+H35Label.grid(row=44, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H35Entry = customtkinter.CTkOptionMenu(tab4, values=["Si.", "No."])
+H35Entry.grid(row=44, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+NoticeLabel = customtkinter.CTkLabel(tab4, text="PARA USO INTERNO, SE CUBRE DE ACUERDO AL RESULTADO DE LA ENTREVISTA, NO SON PREGUNTAS QUE SE LE REALICEN A LA PERSONA DE INTERÉS  ", fg_color="transparent")
+NoticeLabel.grid(row=45, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+
+H36Label = customtkinter.CTkLabel(tab4, text="¿Cuáles servicios se le brindaron a la persona?  ", fg_color="transparent")
+H36Label.grid(row=46, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+
+# Variables para cada opción de checkbox
+agua_alimento_var = customtkinter.StringVar()
+alimento_var = customtkinter.StringVar()
+kit_var = customtkinter.StringVar()
+ropa_calzado_var = customtkinter.StringVar()
+regadera_var = customtkinter.StringVar()
+asesoria_var = customtkinter.StringVar()
+orientacion_legal_var = customtkinter.StringVar()
+orientacion_empleo_var = customtkinter.StringVar()
+orientacion_educacion_var = customtkinter.StringVar()
+orientacion_vivienda_var = customtkinter.StringVar()
+orientacion_salud_var = customtkinter.StringVar()
+orientacion_psicologicos_var = customtkinter.StringVar()
+canalizacion_psicologicos_var = customtkinter.StringVar()
+atencion_psicosocial_var = customtkinter.StringVar()
+
+# Crear los CheckBox
+agua_alimento_cb = customtkinter.CTkCheckBox(tab4, text="Agua y alimento", variable=agua_alimento_var, onvalue="Agua y alimento", offvalue="")
+alimento_cb = customtkinter.CTkCheckBox(tab4, text="Alimento.", variable=alimento_var, onvalue="Alimento", offvalue="")
+kit_cb = customtkinter.CTkCheckBox(tab4, text="Kit de higiene.", variable=kit_var, onvalue="Kit de higiene", offvalue="")
+ropa_calzado_cb = customtkinter.CTkCheckBox(tab4, text="Ropa y calzado.", variable=ropa_calzado_var, onvalue="Ropa y calzado", offvalue="")
+regadera_cb = customtkinter.CTkCheckBox(tab4, text="Acceso a higiene (Regadera).", variable=regadera_var, onvalue="Acceso a higiene (Regadera)", offvalue="")
+asesoria_cb = customtkinter.CTkCheckBox(tab4, text="Asesoría legal.", variable=asesoria_var, onvalue="Asesoría legal", offvalue="")
+orientacion_legal_cb = customtkinter.CTkCheckBox(tab4, text="Orientación legal.", variable=orientacion_legal_var, onvalue="Orientación legal", offvalue="")
+orientacion_empleo_cb = customtkinter.CTkCheckBox(tab4, text="Orientación en búsqueda de empleo.", variable=orientacion_empleo_var, onvalue="Orientación en búsqueda de empleo", offvalue="")
+orientacion_educacion_cb = customtkinter.CTkCheckBox(tab4, text="Orientación en el acceso a la educación.", variable=orientacion_educacion_var, onvalue="Orientación en el acceso a la educación", offvalue="")
+orientacion_vivienda_cb = customtkinter.CTkCheckBox(tab4, text="Orientación en la búsqueda de vivienda.", variable=orientacion_vivienda_var, onvalue="Orientación en la búsqueda de vivienda", offvalue="")
+orientacion_salud_cb = customtkinter.CTkCheckBox(tab4, text="Orientación para acceder a servicios de salud.", variable=orientacion_salud_var, onvalue="Orientación para acceder a servicios de salud", offvalue="")
+orientacion_psicologicos_cb = customtkinter.CTkCheckBox(tab4, text="Orientación a servicios prisológicos.", variable=orientacion_psicologicos_var, onvalue="Orientación a servicios prisológicos", offvalue="")
+canalizacion_psicologicos_cb = customtkinter.CTkCheckBox(tab4, text="Canalización a servicios pricológicos.", variable=canalizacion_psicologicos_var, onvalue="Canalización a servicios pricológicos", offvalue="")
+atencion_psicosocial_cb = customtkinter.CTkCheckBox(tab4, text="Atención psicosocial.", variable=atencion_psicosocial_var, onvalue="Atención psicosocial", offvalue="")
+
+# Colocar los CheckBox en el grid
+agua_alimento_cb.grid(row=46, column=1, padx=1, pady=5, sticky="w")
+alimento_cb.grid(row=147, column=1, padx=1, pady=5, sticky="w")
+kit_cb.grid(row=48, column=1, padx=1, pady=5, sticky="w")
+ropa_calzado_cb.grid(row=49, column=1, padx=1, pady=5, sticky="w")
+regadera_cb.grid(row=50, column=1, padx=1, pady=5, sticky="w")
+asesoria_cb.grid(row=51, column=1, padx=1, pady=5, sticky="w")
+orientacion_legal_cb.grid(row=52, column=1, padx=1, pady=5, sticky="w")
+orientacion_empleo_cb.grid(row=53, column=1, padx=1, pady=5, sticky="w")
+orientacion_educacion_cb.grid(row=54, column=1, padx=1, pady=5, sticky="w")
+orientacion_vivienda_cb.grid(row=55, column=1, padx=1, pady=5, sticky="w")
+orientacion_salud_cb.grid(row=56, column=1, padx=1, pady=5, sticky="w")
+orientacion_psicologicos_cb.grid(row=57, column=1, padx=1, pady=5, sticky="w")
+canalizacion_psicologicos_cb.grid(row=58, column=1, padx=1, pady=5, sticky="w")
+atencion_psicosocial_cb.grid(row=59, column=1, padx=1, pady=5, sticky="w")
+
+H36Entry = []
+if agua_alimento_var.get():
+    H13Entry.append(Ingles_var.get())
+if alimento_var.get():
+    H13Entry.append(alimento_var.get())
+if kit_var.get():
+    H13Entry.append(kit_var.get())
+if ropa_calzado_var.get():
+    H13Entry.append(ropa_calzado_var.get())
+if regadera_var.get():
+    H13Entry.append(regadera_var.get())
+if asesoria_var.get():
+    H13Entry.append(asesoria_var.get())
+if orientacion_legal_var.get():
+    H13Entry.append(orientacion_legal_var.get())
+if orientacion_empleo_var.get():
+    H13Entry.append(orientacion_empleo_var.get())
+if orientacion_educacion_var.get():
+    H13Entry.append(orientacion_educacion_var.get())
+if orientacion_vivienda_var.get():
+    H13Entry.append(orientacion_vivienda_var.get())
+if orientacion_salud_var.get():
+    H13Entry.append(orientacion_salud_var.get())
+if orientacion_psicologicos_var.get():
+    H13Entry.append(orientacion_psicologicos_var.get())
+if canalizacion_psicologicos_var.get():
+    H13Entry.append(canalizacion_psicologicos_var.get())
+if atencion_psicosocial_var.get():
+    H13Entry.append(atencion_psicosocial_var.get())
+
+'''
+SUBIDA DE ARCHIVOS
+'''
+
+H40Label = customtkinter.CTkLabel(tab4, text="Señas particulares.  ", fg_color="transparent")
+H40Label.grid(row=63, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H40Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H40Entry.grid(row=63, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H41Label = customtkinter.CTkLabel(tab4, text="Contacto de emergencia.  ", fg_color="transparent")
+H41Label.grid(row=64, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H41Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H41Entry.grid(row=64, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H42Label = customtkinter.CTkLabel(tab4, text="Geográficamente, ¿Dónde se encuentra su contacto de emergencia?  ", fg_color="transparent")
+H42Label.grid(row=65, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H42Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H42Entry.grid(row=65, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
+H43Label = customtkinter.CTkLabel(tab4, text="Observaciones finales.  ", fg_color="transparent")
+H43Label.grid(row=66, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+H43Entry = customtkinter.CTkTextbox(tab4, width = 300, height = 10)
+H43Entry.grid(row=66, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+
 #submitLBtn = customtkinter.CTkButton(tab2, text="Registrar", width=50, command = lambda: Legal.new_entry(workbook, getLText()))
 #submitLBtn.grid(row = 14, column = 0, padx=1,pady=5,ipady=0,sticky="e")
 
