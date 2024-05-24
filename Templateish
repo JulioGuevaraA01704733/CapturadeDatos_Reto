@@ -503,7 +503,7 @@ atencion_psicosocial_cb = customtkinter.CTkCheckBox(scrollable_frame4, text="Ate
 
 # Colocar los CheckBox en el grid
 agua_alimento_cb.grid(row=46, column=1, padx=1, pady=5, sticky="w")
-alimento_cb.grid(row=147, column=1, padx=1, pady=5, sticky="w")
+alimento_cb.grid(row=47, column=1, padx=1, pady=5, sticky="w")
 kit_cb.grid(row=48, column=1, padx=1, pady=5, sticky="w")
 ropa_calzado_cb.grid(row=49, column=1, padx=1, pady=5, sticky="w")
 regadera_cb.grid(row=50, column=1, padx=1, pady=5, sticky="w")
