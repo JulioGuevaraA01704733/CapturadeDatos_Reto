@@ -13,6 +13,8 @@ app.geometry(f"720x{screen_height}")
 # Posicionar la ventana en la parte superior de la pantalla
 app.geometry(f"720x{screen_height}+0+0")
 
+bold_font = ("Helvetica", 14, "bold")
+
 # Pestañas
 tab = customtkinter.CTkTabview(app, width=620, height=680)
 tab.grid(row=0,column=0,sticky="w",padx=50,pady=20)
@@ -470,13 +472,13 @@ H35Label.grid(row=45, column = 0, padx=1,pady=5,ipady=0,sticky="e")
 H35Entry = customtkinter.CTkOptionMenu(scrollable_frame4, values=["Si.", "No."])
 H35Entry.grid(row=45, column = 1, padx=1,pady=5,ipady=0,sticky="w")
 
-NoticeLabel = customtkinter.CTkLabel(scrollable_frame4, text="PARA USO INTERNO, SE CUBRE DE AC", fg_color="transparent")
+NoticeLabel = customtkinter.CTkLabel(scrollable_frame4, text="PARA USO INTERNO, SE CUBRE DE AC", font=bold_font, fg_color="transparent")
 NoticeLabel.grid(row=57, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-NoticeLabel2 = customtkinter.CTkLabel(scrollable_frame4, text="UERDO AL RESULTADO DE LA ENTREVISTA", fg_color="transparent")
+NoticeLabel2 = customtkinter.CTkLabel(scrollable_frame4, text="UERDO AL RESULTADO DE LA ENTREVISTA", font=bold_font, fg_color="transparent")
 NoticeLabel2.grid(row=57, column = 1, padx=1,pady=5,ipady=0,sticky="w")
-NoticeLabel3 = customtkinter.CTkLabel(scrollable_frame4, text="NO SON PREGUNTAS QUE SE LE ", fg_color="transparent")
+NoticeLabel3 = customtkinter.CTkLabel(scrollable_frame4, text="NO SON PREGUNTAS QUE SE LE ", font=bold_font, fg_color="transparent")
 NoticeLabel3.grid(row=58, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-NoticeLabel4 = customtkinter.CTkLabel(scrollable_frame4, text="REALICEN A LA PERSONA DE INTERÉS", fg_color="transparent")
+NoticeLabel4 = customtkinter.CTkLabel(scrollable_frame4, text="REALICEN A LA PERSONA DE INTERÉS", font=bold_font, fg_color="transparent")
 NoticeLabel4.grid(row=58, column = 1, padx=1,pady=5,ipady=0,sticky="w")
 
 H36Label = customtkinter.CTkLabel(scrollable_frame4, text="¿Cuáles servicios se le brindaron a la persona?  ", fg_color="transparent")
