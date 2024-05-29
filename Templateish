@@ -1,10 +1,17 @@
-# Importar: Librerías
 import customtkinter
 
 # Inicializar: Interfaz
 app = customtkinter.CTk()
 app.title("Encriptación de Base de Datos")
-app.geometry("720x780")
+
+screen_width = app.winfo_screenwidth()
+screen_height = app.winfo_screenheight()
+
+# Establecer la geometría de la aplicación para que abarque toda la altura
+app.geometry(f"720x{screen_height}")
+
+# Posicionar la ventana en la parte superior de la pantalla
+app.geometry(f"720x{screen_height}+0+0")
 
 # Pestañas
 tab = customtkinter.CTkTabview(app, width=620, height=680)
