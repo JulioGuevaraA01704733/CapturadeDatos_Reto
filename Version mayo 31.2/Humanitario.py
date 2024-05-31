@@ -409,9 +409,8 @@ class RegistroHumanitario:
             self.H43Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="w")
             n_rows += 1
 
-            #NOMBRE ?
-            self.submitLBtn = customtkinter.CTkButton(self.scrollable_frame, text="Registrar", width=50, command = lambda: new_entry(self.workbook, self.getHText(), self.app))
-            self.submitLBtn.grid(row = n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+            self.submitHBtn = customtkinter.CTkButton(self.scrollable_frame, text="Registrar", width=50, command = lambda: new_entry(self.workbook, self.getHText(), self.app))
+            self.submitHBtn.grid(row = n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
             n_rows += 1
 
     def getHText(self):
