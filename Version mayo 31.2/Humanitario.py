@@ -22,7 +22,6 @@ class RegistroHumanitario:
 
             self.H1Label = customtkinter.CTkLabel(self.scrollable_frame, text = "Adulto, NNA, NNAnA:  ", fg_color = "transparent") # Nombre(s)
             self.H1Label.grid(row = n_rows, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
-            n_rows += 1
             self.H1Entry = customtkinter.CTkOptionMenu(self.scrollable_frame, values=["Adulto",
                                                                             "Niña acompañada.",
                                                                             "Niño acompañado.",
