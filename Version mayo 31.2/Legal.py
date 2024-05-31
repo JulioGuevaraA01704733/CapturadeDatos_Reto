@@ -4,6 +4,7 @@ import customtkinter
 import CTkClasses
 import decryption
 import tkinter
+import Global
 
 class RegistroLegal:
     def __init__(self, tab2, workbook, app):
@@ -17,84 +18,102 @@ class RegistroLegal:
         self.scrollable_frame.grid(row=0, column=3, sticky="nsew", padx=0, pady=0)
         self.scrollable_frame.grid_rowconfigure(0, weight=1)
         self.scrollable_frame.grid_columnconfigure(0, weight=1)
+        
+        n_rows = 0
 
         self.namesLLabel = customtkinter.CTkLabel(self.scrollable_frame, text = "Nombre(s):  ", fg_color = "transparent") # Nombre(s)
-        self.namesLLabel.grid(row = 0, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
+        self.namesLLabel.grid(row = n_rows, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
         self.namesLEntry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.namesLEntry.grid(row = 0, column = 1, padx = 1, pady = 5, ipady = 0, sticky = "e")
+        self.namesLEntry.grid(row = n_rows, column = 1, padx = 1, pady = 5, ipady = 0, sticky = "e")
+        n_rows += 1
 
         self.surPLLabel = customtkinter.CTkLabel(self.scrollable_frame, text = "Apellido Paterno: ", fg_color = "transparent") # Apellido Paterno
-        self.surPLLabel.grid(row = 1, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
+        self.surPLLabel.grid(row = n_rows, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
         self.surPLEntry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.surPLEntry.grid(row = 1, column = 1, padx= 1, pady = 5, ipady = 0, sticky = "e")
+        self.surPLEntry.grid(row = n_rows, column = 1, padx= 1, pady = 5, ipady = 0, sticky = "e")
+        n_rows += 1
 
         self.surMLLabel = customtkinter.CTkLabel(self.scrollable_frame, text = "Apellido Materno: ", fg_color = "transparent") # Apellida Materno
-        self.surMLLabel.grid(row = 2, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
+        self.surMLLabel.grid(row = n_rows, column = 0, padx = 1, pady = 5, ipady = 0, sticky = "e")
         self.surMLEntry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.surMLEntry.grid(row = 2, column = 1, padx= 1, pady = 5, ipady = 0, sticky = "e")
+        self.surMLEntry.grid(row = n_rows, column = 1, padx= 1, pady = 5, ipady = 0, sticky = "e")
+        n_rows += 1
 
         self.L2Label = customtkinter.CTkLabel(self.scrollable_frame, text="Orientaciones Legales:  ", fg_color="transparent")
-        self.L2Label.grid(row=3, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L2Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L2Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L2Entry.grid(row=3, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L2Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L3Label = customtkinter.CTkLabel(self.scrollable_frame, text="Asesorías Legales:  ", fg_color="transparent")
-        self.L3Label.grid(row=4, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L3Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L3Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L3Entry.grid(row=4, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L3Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L4Label = customtkinter.CTkLabel(self.scrollable_frame, text="Solicitud de Refugiado:  ", fg_color="transparent")
-        self.L4Label.grid(row=5, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L4Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L4Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L4Entry.grid(row=5, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L4Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L5Label = customtkinter.CTkLabel(self.scrollable_frame, text="Regularización por Razones Humanitarias:  ", fg_color="transparent")
-        self.L5Label.grid(row=6, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L5Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L5Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L5Entry.grid(row=6, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L5Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L6Label = customtkinter.CTkLabel(self.scrollable_frame, text="Regularización por Unidad Familiar:  ", fg_color="transparent")
-        self.L6Label.grid(row=7, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L6Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L6Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L6Entry.grid(row=7, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L6Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L7Label = customtkinter.CTkLabel(self.scrollable_frame, text="Cambio de Condición de Estancia:  ", fg_color="transparent")
-        self.L7Label.grid(row=8, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L7Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L7Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L7Entry.grid(row=8, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L7Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L8Label = customtkinter.CTkLabel(self.scrollable_frame, text="Renovaciones:  ", fg_color="transparent")
-        self.L8Label.grid(row=9, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L8Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L8Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L8Entry.grid(row=9, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L8Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L9Label = customtkinter.CTkLabel(self.scrollable_frame, text="Resposición de Documento Migratorio:  ", fg_color="transparent")
-        self.L9Label.grid(row=10, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L9Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L9Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L9Entry.grid(row=10, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L9Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L10Label = customtkinter.CTkLabel(self.scrollable_frame, text="Notificación de Cambio de Domicilio:  ", fg_color="transparent")
-        self.L10Label.grid(row=11, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L10Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L10Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L10Entry.grid(row=11, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L10Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L11Label = customtkinter.CTkLabel(self.scrollable_frame, text="Notificación de Cambio de Nacionalidad:  ", fg_color="transparent")
-        self.L11Label.grid(row=12, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L11Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L11Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L11Entry.grid(row=12, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L11Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L12Label = customtkinter.CTkLabel(self.scrollable_frame, text="Notificación de Cambio de Lugar de Trabajo:  ", fg_color="transparent")
-        self.L12Label.grid(row=13, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L12Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L12Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L12Entry.grid(row=13, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L12Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.L13Label = customtkinter.CTkLabel(self.scrollable_frame, text="Canalización de las Personas Migrantes a \nlos consulados de Honduras, \nGuatemala y el Salvador:  ", fg_color="transparent")
-        self.L13Label.grid(row=14, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.L13Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
         self.L13Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-        self.L13Entry.grid(row=14, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        self.L13Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
         self.submitLBtn = customtkinter.CTkButton(self.scrollable_frame, text="Registrar", width=50, command = lambda: new_entry(self.workbook, self.getLText(), self.app))
-        self.submitLBtn.grid(row = 15, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        self.submitLBtn.grid(row = n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
+        n_rows += 1
 
     def getLText(self):
         entriesLText = [self.surPLEntry, self.surMLEntry, self.namesLEntry, self.L2Entry, self.L3Entry, self.L4Entry, self.L5Entry, self.L6Entry, self.L7Entry, self.L8Entry, self.L9Entry, self.L10Entry, self.L11Entry, self.L12Entry, self.L13Entry]
@@ -111,8 +130,11 @@ def new_entry(workbook, entry, GUI):
     cols = len(legal_sheet.row_values(1)) # MMANUAL
     legal_ids = legal_sheet.col_values(1)
     if id not in legal_ids: # Registro no existente
-        CTkClasses.popup_error("Registre al individuo en la\n sección General antes de llevar\n a cabo el registro legal.", GUI)
-        return
+        id2 = Global.similar_entries(id, legal_ids[1:], GUI)
+        if id2 == id:
+            CTkClasses.popup_error("Registre al individuo en la\n sección General antes de llevar\n a cabo el registro psicosocial.", GUI)
+            return
+        else: id = id2
     index = legal_ids.index(id) + 1
     existing_row = legal_sheet.row_values(index)[1:]
     if len(existing_row) == 0:  # Agregar registro Legal
