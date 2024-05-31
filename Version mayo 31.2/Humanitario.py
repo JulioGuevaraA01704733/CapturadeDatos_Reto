@@ -31,13 +31,7 @@ class RegistroHumanitario:
                                                                             "Adolescente no acompañado."])
             self.H1Entry.grid(row= n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="w")
             n_rows += 1
-
-            self.H5Label = customtkinter.CTkLabel(self.scrollable_frame, text="Departamento / Estado.  ", fg_color="transparent")
-            self.H5Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-            self.H5Entry = customtkinter.CTkTextbox(self.scrollable_frame, width = 300, height = 10)
-            self.H5Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="w")
-            n_rows += 1
-
+        
             self.H6Label = customtkinter.CTkLabel(self.scrollable_frame, text="Estado Civil.  ", fg_color="transparent")
             self.H6Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
             self.H6Entry = customtkinter.CTkOptionMenu(self.scrollable_frame, values=["Casada / Casado.",
