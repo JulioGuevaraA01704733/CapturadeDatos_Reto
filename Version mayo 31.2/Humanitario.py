@@ -407,7 +407,7 @@ class RegistroHumanitario:
             n_rows += 1
 
     def getHText(self):
-        entriesHText = [self.H5Entry, self.H12Entry, self.H14Entry, 
+        entriesHText = [self.H12Entry, self.H14Entry, 
                         self.H16Entry, self.H17Entry, self.H21Entry, 
                         self.H27Entry, self.H32Entry, self.H40Entry,
                         self.H41Entry, self.H42Entry, self.H43Entry]
