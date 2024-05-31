@@ -177,7 +177,7 @@ class RegistroHumanitario:
             self.H17Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="w")
             n_rows += 1
 
-            self.H18Label = customtkinter.CTkLabel(self.scrollable_frame, text="Durante su viaje desde que salió de su \n país hasta antes de llegar a México, ¿Usted \n sufrió de algún abuso a sus Derechos self.Humanos?  ", fg_color="transparent")
+            self.H18Label = customtkinter.CTkLabel(self.scrollable_frame, text="Durante su viaje desde que salió de su \n país hasta antes de llegar a México, ¿Usted \n sufrió de algún abuso a sus Derechos Humanos?  ", fg_color="transparent")
             self.H18Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
             self.H18Entry = customtkinter.CTkOptionMenu(self.scrollable_frame, values=["Si.", "No."])
             self.H18Entry.grid(row=n_rows, column = 1, padx=1,pady=5,ipady=0,sticky="w")
@@ -332,42 +332,42 @@ class RegistroHumanitario:
             n_rows += 1
 
             self.serviciosVar5 = customtkinter.StringVar(value = "No")
-            self.serviciosCB5 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Acceso a higiene (Regadera)", variable=self.serviciosVar6, onvalue="Sí", offvalue="No")
+            self.serviciosCB5 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Acceso a higiene (Regadera)", variable=self.serviciosVar5, onvalue="Sí", offvalue="No")
             self.serviciosCB5.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar6 = customtkinter.StringVar(value = "No")
-            self.serviciosCB6 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Asesoría legal", variable=self.serviciosVar7, onvalue="Sí", offvalue="No")
+            self.serviciosCB6 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Asesoría legal", variable=self.serviciosVar6, onvalue="Sí", offvalue="No")
             self.serviciosCB6.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar7 = customtkinter.StringVar(value = "No")
-            self.serviciosCB7 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación legal", variable=self.serviciosVar8, onvalue="Sí", offvalue="No")
+            self.serviciosCB7 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación legal", variable=self.serviciosVar7, onvalue="Sí", offvalue="No")
             self.serviciosCB7.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar8 = customtkinter.StringVar(value = "No")
-            self.serviciosCB8 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en búsqueda de empleo", variable=self.serviciosVar9, onvalue="Sí", offvalue="No")
+            self.serviciosCB8 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en búsqueda de empleo", variable=self.serviciosVar8, onvalue="Sí", offvalue="No")
             self.serviciosCB8.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar9 = customtkinter.StringVar(value = "No")
-            self.serviciosCB9 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en el acceso a la educación", variable=self.serviciosVar10, onvalue="Sí", offvalue="No")
+            self.serviciosCB9 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en el acceso a la educación", variable=self.serviciosVar9, onvalue="Sí", offvalue="No")
             self.serviciosCB9.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar10 = customtkinter.StringVar(value = "No")
-            self.serviciosCB10 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en la búsqueda de vivienda", variable=self.serviciosVar11, onvalue="Sí", offvalue="No")
+            self.serviciosCB10 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación en la búsqueda de vivienda", variable=self.serviciosVar10, onvalue="Sí", offvalue="No")
             self.serviciosCB10.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar11 = customtkinter.StringVar(value = "No")
-            self.serviciosCB11 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación para acceder a servicios de salud", variable=self.serviciosVar12, onvalue="Sí", offvalue="No")
+            self.serviciosCB11 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación para acceder a servicios de salud", variable=self.serviciosVar11, onvalue="Sí", offvalue="No")
             self.serviciosCB11.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
             self.serviciosVar12 = customtkinter.StringVar(value = "No")
-            self.serviciosCB12 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación a servicios psisológicos", variable=self.serviciosVar5, onvalue="Sí", offvalue="No")
+            self.serviciosCB12 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Orientación a servicios psisológicos", variable=self.serviciosVar12, onvalue="Sí", offvalue="No")
             self.serviciosCB12.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
 
