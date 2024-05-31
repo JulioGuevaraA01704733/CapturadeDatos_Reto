@@ -56,13 +56,11 @@ class RegistroHumanitario:
 
             self.H8Label = customtkinter.CTkLabel(self.scrollable_frame, text="Documento de identidad.  ", fg_color="transparent")
             self.H8Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-            n_rows += 1
 
             self.docVar1 = customtkinter.StringVar(value = "No")
             self.docCB1 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Tarjeta de identidad de país de origen", variable=self.docVar1, onvalue="Sí", offvalue="No")
             self.docCB1.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
             n_rows += 1
-
             self.docVar2 = customtkinter.StringVar(value = "No")
             self.docCB2 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Certificado de nacionalidad / Acta de Nacimiento", variable=self.docVar2, onvalue="Sí", offvalue="No")
             self.docCB2.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
@@ -116,7 +114,7 @@ class RegistroHumanitario:
 
             self.H13Label = customtkinter.CTkLabel(self.scrollable_frame, text="Idiomas que domina.  ", fg_color="transparent")
             self.H13Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-            n_rows += 1
+        
             self.idiomaVar1 = customtkinter.StringVar(value = "No")
             self.idiomaCB1 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Inglés", variable=self.idiomaVar1, onvalue="Sí", offvalue="No")
             self.idiomaCB1.grid(row=n_rows, column=1, padx=1, pady=5, sticky="w")
@@ -302,7 +300,6 @@ class RegistroHumanitario:
 
             self.H36Label = customtkinter.CTkLabel(self.scrollable_frame, text="¿Cuáles servicios se le brindaron a la persona?  ", fg_color="transparent")
             self.H36Label.grid(row=n_rows, column = 0, padx=1,pady=5,ipady=0,sticky="e")
-            n_rows += 1
 
             self.serviciosVar1 = customtkinter.StringVar(value = "No")
             self.serviciosCB1 = customtkinter.CTkCheckBox(self.scrollable_frame, text="Agua y alimento", variable=self.serviciosVar1, onvalue="Sí", offvalue="No")
