@@ -1,0 +1,17 @@
+.../CTkClasses.py
+.../GUI_SHEETS.py
+.../General.py
+.../Global.py
+.../Humanitario.py
+.../Legal.py
+.../Psicosocial.py
+.../Transformation.py
+.../decryption.py
+.../encryption.py
+.../Keys/credentials.json
+.../Keys/private_key_H.txt
+.../Keys/private_key_L.txt
+.../Keys/private_key_P.txt
+.../Keys/public_key_H.txt
+.../Keys/public_key_L.txt
+.../Keys/public_key_P.txt
